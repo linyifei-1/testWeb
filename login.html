@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h1 style="text-align: center;">登录</h1>
+        <div>
+            <label>用户名：</label>
+            <input id="username" name="username" required>
+        </div>
+        <div>
+            <label>密码：</label>
+            <input id="password" name="password" required name="password">
+        </div>
+        <div>
+            <button type="button" id="btn">提交</button>
+        </div>
+    </form>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        var btn = document.getElementById("btn");
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
+        
+        btn.onclick = function(){
+            var username = usernameInput.value;
+            var password = passwordInput.value;
+            //
+            $.post("login.php",{username: username,password: password},function(data){
+                alert(data.data)
+                console.log(data)
+                if(data.error === 2){
+                    //
+                    location.href = 'mykeshe.php'
+                }
+                if(data.error === 1){
+                    //
+                    location.href = 'upload.html'
+                }
+            },"json")
+        }
+    </script>
+</body>
+</html>

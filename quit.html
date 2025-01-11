@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退出登录确认</title>
+</head>
+<body>
+    <script>
+        // 页面加载时自动弹出确认对话框
+        window.onload = function() {
+            var result = confirm("是否退出登录？");
+            if (result) {
+                // 用户点击确认，跳转到 login.html 页面
+                window.location.href = 'login.html';
+            } else {
+                // 用户点击取消，返回到之前的页面
+                window.history.back();
+            }
+        };
+    </script>
+</body>
+</html>
